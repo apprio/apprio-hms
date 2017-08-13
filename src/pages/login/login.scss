@@ -1,0 +1,51 @@
+page-login {
+
+    ion-navbar {
+        background-color: color($colors, primary, base);
+    }
+    .content {
+        transition: 5s ease-in-out all;
+        .logo {
+            width: 45%;
+        }
+        .center-div {
+            background-color: white;
+            text-align: left;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 135px;
+            font-size: 14px;
+            margin: 15px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: block;
+            flex-direction: column;
+            padding-bottom: 15px;
+            .heading {
+                color: color($colors, secondary, base);
+                font-weight: 700;
+            }
+            .subtitle {
+                padding-top: 15px;
+                color: grey;
+                line-height: 25px;
+            }
+            .welcome-text {
+                color: color($colors, dark, base);
+                padding-bottom: 10px;
+            }
+            .login-button-div {
+                padding-top: 10px;
+                text-align: center;
+                .login-button {
+                    background-color: color($colors, secondary, base);
+                    color: white;
+                    height: 40px;
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+}

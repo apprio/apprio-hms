@@ -1,0 +1,45 @@
+<!--
+  Generated template for the NewHubPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+   <ion-navbar color="primary">
+    <ion-title color="light">Add New Hub</ion-title>
+    <ion-buttons left>
+      <button ion-button (click)="cancel()">
+        Cancel
+      </button>
+    </ion-buttons> 
+  </ion-navbar> 
+
+</ion-header>
+
+
+<ion-content padding class="page-content">
+  <div> 
+    <h1 class="title">New Hub</h1>
+  </div>
+  <form class="form" (ngSubmit)="logForm()">
+    <ion-item class='form-item'>
+      <ion-label floating color="primary">Hub Name</ion-label>
+      <ion-input [(ngModel)]="newHub.name" name="name"></ion-input>
+    </ion-item>
+    <ion-item class='form-item'>
+      <ion-label floating color="primary">Pi Server URL</ion-label>
+      <ion-input [(ngModel)]="newHub.url" name="url"></ion-input>
+    </ion-item>
+    <ion-item class='form-item'>
+      <ion-label floating color="primary">City</ion-label>
+      <ion-input [(ngModel)]="newHub.city" name="city"></ion-input>
+    </ion-item>
+    <ion-item class='form-item'>
+      <ion-label floating color="primary">State</ion-label>
+      <ion-input [(ngModel)]="newHub.state" name="state"></ion-input>
+    </ion-item>
+    <button ion-button type="submit" class="submit-button" block>Add Hub</button>
+    </form>
+  <div class="note-div"> Note: An RPi server should be configured before creating a new Hub. </div> 
+</ion-content>

@@ -1,0 +1,29 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list class="settings-field-list">
+    <ion-item *ngFor="let field of fields; let i = index" class="field">
+      <ion-grid class="field-grid">
+        <ion-row class="field-row">
+          <ion-col class="field-name-value">
+            {{field}}:
+          </ion-col>
+          <ion-col class="field-name-value">
+            {{fieldVals[i]}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item class="logout-item">
+      <button ion-button full clear class="logout-button" (click)="presentLogoutHubAlert()">Logout</button>
+    </ion-item>
+  </ion-list>   
+</ion-content>

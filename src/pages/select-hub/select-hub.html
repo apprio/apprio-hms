@@ -1,0 +1,79 @@
+<ion-header no-border>
+  <ion-navbar no-border color="primary">
+    <ion-title>
+      Manage Hubs
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="presentSettingsPage()">
+        <ion-icon name="cog"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentNewHubPage()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-toolbar no-padding>
+    <div class="header-div">
+      <img src="assets/icon/banner-apprio1.png">
+      <div class="title-div"> 
+        <ion-grid> 
+          <ion-row>
+            <ion-col class="active-hubs" [ngSwitch]="hubs.length">
+               <div *ngSwitchCase="1"class="text">{{hubs.length}} Hub connected.</div>
+               <div *ngSwitchDefault class="text">{{hubs.length}} Hubs connected.</div>  
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+  </div>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="page-content">
+  <ion-refresher (ionRefresh)="refreshHubs($event)">
+    <ion-refresher-content 
+      color="dark"
+      pullingIcon="arrow-round-down"
+      refreshingIcon="refresh"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Fetching hubs..."
+      closeDuration="700"
+      pullMin="0"
+      pullMax="100">  
+    </ion-refresher-content>
+  </ion-refresher> 
+  <ion-list class="hub-list" [ngSwitch]="hubs.length">
+    <ion-item-sliding *ngFor="let hub of hubs" color="dark" (ionSwipe)="deleteHub(hub.id)">
+      <ion-item class="hub-item" (click)="presentHubControlPage(hub.id)">
+        <ion-grid>
+          <ion-row>
+            <ion-col col-10>
+               <div class="text-container"> 
+                <div class="name">{{hub.name}}</div>
+                <div class="id">ID: {{hub.id}}</div>
+                <div class="location">{{hub.city}}, {{hub.state}}</div>
+              </div>
+            </ion-col>
+            <ion-col class="status-col" col-2>
+              <div class="status-container" [ngSwitch]="hub.power">
+                <div *ngSwitchCase="'5'" class="status-on"> ON </div>
+                <div *ngSwitchDefault class="status-off"> OFF </div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color="danger" (click)="presentDeleteHubAlert(hub.id)"><ion-icon name="trash"></ion-icon>Delete</button>
+      </ion-item-options>
+    </ion-item-sliding>
+    <!-- <ion-item class="no-hubs-item" *ngSwitchCase="0" (click)="getHubs()">
+      <div>{{error}}</div>
+      <div><ion-icon name="refresh" class="refresh-button"></ion-icon></div>
+    </ion-item> -->
+  </ion-list>   
+</ion-content>

@@ -1,3 +1,158 @@
 page-home {
 
+    ion-navbar {
+        background-color: color($colors, primary, base);
+        .logo {
+            width: 55%;
+        }
+    }
+
+    .header-div {
+        background: linear-gradient(to bottom, color($colors, primary, base) 0%, color($colors, primary-2, base) 100%);
+        height: 10vh;
+        width: 100%;
+        padding: 0px;
+        .title-div {
+            bottom: 0px;
+            height: 100%;
+            .select-hub {
+                padding-left: 20px;
+                bottom: 0px;
+                position: absolute;
+                color: white;
+                max-width: 90% !important;
+                font-size: 30px;
+            }
+        }
+    }
+
+    .header-buttons-toolbar {
+        .edit-button {
+            color: white;
+        }
+        .refresh-button {
+            color: white;
+        }
+    }
+
+    .button-grid-div {
+        background-color: color($colors, light, base);
+        border-bottom: 1px solid lightgrey;
+        .button-grid {
+            display: flex;
+            .output-row {
+                ion-col {
+                    padding: 20px;
+                    padding-top: 5px;
+                    padding-bottom: 3px;
+                    display: flex;
+                    justify-content: space-around;
+                }
+                .output-button {
+                    color: white;;
+                    background-color: color($colors, secondary, base);
+                    outline-width: 1.5px;
+                    text-align: center;
+                    border-radius: 50%;
+                    background-color: none;
+                    font-size: 14px;
+                    width: 60px;
+                    height: 60px;
+                    flex: 1;
+                }
+                .output-button:active {
+                    @extend .output-button;
+                }
+                .selected-output-button {
+                    @extend .output-button;
+                    border: 1px solid color($colors, light, base);
+                    box-shadow: 0 0 0 2px color($colors, primary, base);
+                }
+            }
+        }
+    }
+
+    .power-button {
+        background-color: color($colors, primary, base);
+    }
+
+    .card {
+        .card-header {
+            text-align: left;
+            font-size: 16px;
+            letter-spacing: 2px;
+            color: color($colors, dark, base);
+            background-color: color($colors, light, base);
+            ion-col {
+                padding: 0px;
+                padding-right: 20px;
+                display: flex;
+                justify-content: baseline;
+            }
+            .info-title {
+                flex: 1;
+                padding-top: 10px;
+                color: color($colors, dark, base);
+            }
+            .status-div {
+                flex: 1;
+                display: flex;
+                .status-on {
+                    @extend .status-text;
+                    color: lightgreen;
+                    border: 1px solid lightgreen;
+                }
+
+                .status-off {
+                    @extend .status-text;
+                    color: color($colors, primary, base);
+                    border: 1px solid color($colors, primary, base);
+                }
+
+                .status-text {
+                    width: 30%;
+                    background: transparent;
+                    height: 25px;
+                    font-size: 10px;
+                    flex: 1;
+                    padding: 1px;
+                }
+            }
+        }
+        .card-content {
+            font-size: 13px;
+            padding-left: 12px;
+            padding-right: 0px;
+            padding-top: 0px;
+            .list-header {
+                width: 100%;
+                font-size: 16px;
+                padding: 0px;
+                border-bottom: 1px solid lightgrey;
+                color: grey;
+            }
+            .info-item {
+                font-size: 14px;
+                padding: 0px;
+                height: 30px;
+            }
+
+        }
+    }
+
+    .hub-buttons {
+        background-color: color($colors, light, base);
+    }
+
+    .mute-button {
+        border: 1px solid color($colors, primary, base);
+        color: color($colors, primary, base) !important; 
+    }
+
+    .settings-fab {
+        background-color: color($colors, secondary, base);
+    }
+
 }
+
+

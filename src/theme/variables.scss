@@ -34,11 +34,16 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
-  secondary:  #32db64,
-  danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
+  primary:      #730B00,
+  primary-op:   rgba(115, 11, 0, 0.5),
+  primary-2:    #870D00,
+  secondary:    #99CFD5,
+  secondary-op: rgba(153, 207, 213, 0.5),
+  danger:       #f53d3d,
+  light:        #f4f4f4,
+  dark:         #222323,
+  secondaryDark:#272828,
+  background: #FFFCF2
 );
 
 
@@ -86,3 +91,8 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+$font-family-base: 'Montserrat', sans-serif;
+
+// Buttons 
+$fab-size: 55px;
+$fab-mini-size: 45px;

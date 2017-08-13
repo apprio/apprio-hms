@@ -1,14 +1,135 @@
-<ion-header>
-  <ion-navbar>
+<ion-header no-border>
+  <ion-navbar no-border color="primary">
     <ion-title>
-      Ionic Blank
+      <img class="logo" src="assets/icon/logo-apprio.png"/>
     </ion-title>
+    <ion-buttons end class="header-buttons-toolbar">
+      <button ion-button clear class="edit-button" icon-only (click)="presentEditHubPage()"> 
+        <ion-icon name="create"></ion-icon>
+      </button>
+      <button ion-button icon-only class="refresh-button" (click)="refreshData()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
+  <ion-toolbar no-padding>
+    <div class="header-div">
+      <div class="title-div"> 
+         <ion-select class="select-hub" [selectOptions]="selectAlertOptions" title="Hubs" [(ngModel)]="currentHubID" (ionChange)="selectNewHub($event)">
+          <ion-option *ngFor="let hub of hubs" value="{{hub.id}}">{{hub.name}}</ion-option>
+        </ion-select>
+      </div>
+    </div>
+  </ion-toolbar>
+  <ion-toolbar no-padding>
+    <div class="button-grid-div">
+      <ion-grid class="button-grid">
+        <ion-row class="output-row">
+          <ion-col>
+            <div>
+              <button [ngClass]="(currentHub.source=='0')?'selected-output-button':'output-button'" ion-fab outline strong (click)="changeSource('0')">PC</button>
+            </div>
+            <div>
+              <button [ngClass]="(currentHub.source=='1')?'selected-output-button':'output-button'" ion-fab outline strong (click)="changeSource('1')">DP</button>
+            </div>
+            <div>
+              <button [ngClass]="(currentHub.source=='2')?'selected-output-button':'output-button'" ion-fab outline strong (click)="changeSource('2')">HDMI</button>
+            </div>
+            <div>
+              <button [ngClass]="(currentHub.source=='3')?'selected-output-button':'output-button'" ion-fab outline strong (click)="changeSource('3')">VGA</button>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content no-bounce class="hub-page-content">
+  <div class='hub-page-div'>
+    <ion-grid class="card-grid">
+      <ion-row>
+        <ion-card class="card">
+          <ion-card-header class="card-header">
+            <ion-row>
+              <ion-col col-9>
+                <div class="info-title">INFORMATION</div>
+              </ion-col>
+              <ion-col col-3>
+                <div class="status-div" [ngSwitch]="isPowerOn">  
+                  <div *ngSwitchCase="true" ion-button round class="status-on">ON</div>
+                  <div *ngSwitchCase="false" ion-button round class="status-off">OFF</div>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-card-header>
+          <ion-card-content class="card-content">
+            <ion-grid>
+              <ion-row>
+                <ion-col class="info-col">
+                  <ion-list no-lines>
+                    <ion-list-header class="list-header">
+                      Hub
+                    </ion-list-header>
+                    <ion-item class="info-item">
+                      <div class="field">ID: {{currentHub.id}}</div>
+                    </ion-item>
+                    <ion-item class="info-item">
+                      <div class="field">Server IP Address: {{currentHub.pi.ip_address}} </div> 
+                    </ion-item>
+                    <ion-item class="info-item">
+                       <div class="field">{{currentHub.city}}, {{currentHub.state}} </div> 
+                    </ion-item>
+                    <ion-list-header class="list-header">
+                      Pi Server
+                    </ion-list-header>
+                    <ion-item class="info-item">
+                      <div class="field">System: {{currentHub.pi.system}}</div> 
+                    </ion-item>
+                    <ion-item class="info-item">
+                      <div class="field">URL: {{currentHub.pi.url}} </div> 
+                    </ion-item>  
+                  </ion-list>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>        
+      </ion-row>
+    </ion-grid> 
+  </div>
+
+  <ion-fab bottom right >
+    <button ion-fab><ion-icon name="options"></ion-icon></button>
+    <ion-fab-list side="left">
+      <button color="primary" ion-fab class="settings-fab" (click)="changeBrightness('+')">
+        <ion-icon name="sunny"></ion-icon>
+      </button>
+      <button color="primary" ion-fab class="settings-fab" (click)="changeBrightness('-')">
+        <ion-icon small name="sunny"></ion-icon>
+      </button>
+    </ion-fab-list>
+    <ion-fab-list side="top">
+      <button ion-fab color="primary" class="settings-fab" (click)="changeVolume('-')">
+        <ion-icon small name="volume-up"></ion-icon>
+      </button>
+      <button ion-fab color="primary" class="settings-fab" (click)="changeVolume('+')">
+        <ion-icon name="volume-up" ></ion-icon>
+      </button>
+      <button ion-fab icon-only class="mute-button" (click)="toggleMute()">
+        <ion-icon name="volume-off"></ion-icon>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
+  <ion-fab bottom left >
+     <button ion-fab icon-only class="power-button" (click)="changePowerState()">
+      <ion-icon name="power"></ion-icon>
+    </button>
+  </ion-fab>
+
 </ion-content>
+
+
+
+
+
