@@ -11,7 +11,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthServiceProvider {
-  public browser
+  public loginCompleteURL = "https://apprio-pi-server-heroku.herokuapp.com/loginComplete"
   public url
   public user = {
       firstName: null,
@@ -75,7 +75,6 @@ export class AuthServiceProvider {
       this.tokens.id_token = data.id_token
       this.hubDataProvider.user = this.user
       this.hubDataProvider.tokens = this.tokens
-      console.log(data)
       this.storage.set("user", this.user)
       this.storage.set("tokens", {
           access_token: data.access_token,
@@ -115,7 +114,9 @@ export class AuthServiceProvider {
   }
 
   private parseURL(url: string) {
-    var responseParameters = ((url).split("?")[1]).split("&");
+    console.log(url)
+    var responseParameters = (url.split("?")[1]).split("&");
+    console.log(responseParameters)
     var parsedResponse = {};
     for (var i = 0; i < responseParameters.length; i++) {
       parsedResponse[responseParameters[i].split("=")[0]] = responseParameters[i].split("=")[1];
@@ -147,21 +148,21 @@ export class AuthServiceProvider {
     return new Promise( (resolve, reject) => {
       if (this.url) {
         var options = "location=no, clearcache=yes, toolbar=no"
-        this.browser = this.iab.create(this.url, "_blank", options)
-        this.browser.on("exit").subscribe( () => {
+        var browser = this.iab.create(this.url, "_blank", options)
+        browser.on("exit").subscribe( () => {
           reject("early exit")
         })
-        this.browser.on("loadstart").subscribe( (event) => {
-          if ((event.url).indexOf("https://apprio-pi-server-heroku.herokuapp.com/authorize") === 0) {
+        browser.on("loadstart").subscribe( (event) => {
+          if ((event.url).indexOf(this.loginCompleteURL) === 0) {
             var authCode = this.parseURL(event.url)["code"]
             this.getTokenData(authCode)
             .then( (data) => {
               resolve(data)
-              this.browser.close()
+              browser.close()
             })
             .catch( (err) => {
               reject(err)
-              this.browser.close()
+              browser.close()
             })
           }
         })
