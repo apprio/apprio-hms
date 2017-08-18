@@ -116,7 +116,6 @@ export class AuthServiceProvider {
   private parseURL(url: string) {
     console.log(url)
     var responseParameters = (url.split("?")[1]).split("&");
-    console.log(responseParameters)
     var parsedResponse = {};
     for (var i = 0; i < responseParameters.length; i++) {
       parsedResponse[responseParameters[i].split("=")[0]] = responseParameters[i].split("=")[1];
