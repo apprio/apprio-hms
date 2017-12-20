@@ -1,4 +1,9 @@
-### NOTE: To access the Apprio HMS server or daemon files, please visit https://github.com/meccaparker/apprio-hms-server or https://github.com/meccaparker/apprio-hms-daemon.
+## NOTE: 
+
+To access the Apprio HMS server or daemon files, please visit https://github.com/meccaparker/apprio-hms-server or https://github.com/meccaparker/apprio-hms-daemon.
+
+===============================================================
+===============================================================
 
 This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
 
