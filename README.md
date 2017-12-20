@@ -1,4 +1,4 @@
-## NOTE: 
+### Note 
 
 This repository holds the code for the actual hybrid application for the project. The more interesting files for the Apprio HMS server and daemon files can be found at https://github.com/meccaparker/apprio-hms-server and https://github.com/meccaparker/apprio-hms-daemon.
 
