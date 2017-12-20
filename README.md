@@ -1,9 +1,6 @@
 ## NOTE: 
 
-To access the Apprio HMS server or daemon files, please visit https://github.com/meccaparker/apprio-hms-server or https://github.com/meccaparker/apprio-hms-daemon.
-
-===============================================================
-===============================================================
+This repository holds the code for the actual hybrid application for the project. The more interesting files for the Apprio HMS server and daemon files can be found at https://github.com/meccaparker/apprio-hms-server and https://github.com/meccaparker/apprio-hms-daemon.
 
 This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
 
