@@ -16,7 +16,8 @@ Take the name after `ionic2-starter-`, and that is the name of the template to b
 
 ```bash
 $ sudo npm install -g ionic cordova
-$ ionic start myBlank blank
+$ sudo npm install @ionic-native/in-app-browser
+
 ```
 
 Then, to run it, cd into `myBlank` and run:
