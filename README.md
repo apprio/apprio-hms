@@ -10,7 +10,7 @@ This is a starter template for [Ionic](http://ionicframework.com/docs/) projects
 
 To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
 
-### With the Ionic CLI:
+### With the Ionic CLI - MAC:
 
 Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
 
@@ -27,5 +27,22 @@ $ ionic cordova platform add ios
 $ ionic cordova run ios
 ```
 
-Substitute ios for android if not on a Mac.
+Preconditions, download node.js https://nodejs.org/en/
+and git https://git-scm.com/download/win
+
+### With the Ionic CLI - Windows:
+
+The instructions are pretty much the same: 
+
+```bash
+git clone https://github.com/apprio/apprio-hms.git
+cd apprio-hms
+npm install -g ionic cordova
+npm install @ionic-native/in-app-browser
+npm uninstall -D @ionic/cli-plugin-cordova
+ionic serve
+```
+If you receive an error regarding certs:
+https://stackoverflow.com/questions/21855035/ssl-error-cert-untrusted-while-using-npm-command
+
 
